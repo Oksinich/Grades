@@ -1,0 +1,15 @@
+apply from: rootProject.file('feature.gradle')
+apply plugin: 'kotlin-android'
+
+android.resourcePrefix 'to_do_'
+
+dependencies {
+	implementation "androidx.appcompat:appcompat:$appcompat_version"
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+	implementation "com.farpost.inject:scope-injector:$injector_version"
+	implementation "com.farpost.android:archy:$archy_version"
+
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+	implementation 'androidx.test.ext:junit-ktx:1.1.3'
+}

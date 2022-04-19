@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+	compileSdkVersion versions.compileSdk
+
+	defaultConfig {
+		minSdkVersion versions.minSdk
+		targetSdkVersion versions.compileSdk
+		manifestPlaceholders = [screenOrientation: "portrait"]
+
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+			buildConfigField "String", "IMPORTANT_URL", '"https://mr-7.ru/articles/234767/"'
+		}
+		debug {
+			minifyEnabled false
+			manifestPlaceholders = [screenOrientation: "unspecified"]
+			buildConfigField "String", "IMPORTANT_URL", '"https://lifehacker.ru/bud-luchshej-versiej-sebya/"'
+		}
+	}
+	testOptions {
+		unitTests {
+			includeAndroidResources = true
+		}
+	}
+}
+
+dependencies {
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+	testImplementation "junit:junit:$junit_version"
+}
